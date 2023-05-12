@@ -1,7 +1,9 @@
 export type PageProps = {
   params?: any;
-  children?: React.ReactNode;
 };
+
+export type PagePropsWithChildren = PageProps & { children: React.ReactNode }
+
 export type Category = {
   name: string;
   slug: string;

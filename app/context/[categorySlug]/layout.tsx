@@ -1,10 +1,13 @@
-import { fetchCategoryBySlug, PageProps } from '@/lib/getCategories';
+import {
+  fetchCategoryBySlug,
+  type PagePropsWithChildren,
+} from '@/lib/getCategories';
 import { Boundary } from '@/ui/Boundary';
 import { use } from 'react';
 import { Counter } from '../ClickCounter';
 import SubCategoryNav from '../SubCategoryNav';
 
-export default function Layout({ children, params }: PageProps) {
+export default function Layout({ children, params }: PagePropsWithChildren) {
   const category = use(fetchCategoryBySlug(params.categorySlug));
   if (!category) return null;
 
