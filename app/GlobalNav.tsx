@@ -10,6 +10,20 @@ export default function GlobalNav() {
 
   return (
     <div className="space-y-5">
+      <div className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+        <div>Playground</div>
+      </div>
+      <div>
+        <Link
+          href={`/playground`}
+          className={clsx(
+            'block rounded-md px-3 py-2 text-sm font-medium hover:bg-zinc-800 hover:text-zinc-100',
+            'text-zinc-400',
+          )}
+        >
+          Search
+        </Link>
+      </div>
       {demos.map((demo) => {
         return (
           <div key={demo.name}>
