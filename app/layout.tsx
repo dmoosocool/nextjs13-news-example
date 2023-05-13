@@ -1,13 +1,27 @@
+'use client';
 import '@/styles/globals.css';
 import React from 'react';
 import AddressBar from '@/ui/AddressBar';
 import GlobalNav from './GlobalNav';
+import { PropsWithChildren, useEffect, useState } from 'react';
+import { useNavigationEvent } from 'hooks/useNavigationEvent';
+export default function RootLayout({ children }: PropsWithChildren) {
+  const { onStart, onComplete } = useNavigationEvent();
+  useEffect(() => {
+    const queues: (() => void)[] = [];
+    queues.push(() =>
+      onStart(() => {
+        console.log(`router started`);
+      }),
+    );
+    queues.push(() =>
+      onComplete(() => {
+        console.log(`router completed`);
+      }),
+    );
+    return () => queues.forEach((queue) => queue());
+  }, []);
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
   return (
     <html>
       <head>
